@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Store {
+  latitude         Decimal? @db.Decimal(20, 9)
+  contact_location String?  @db.VarChar(80)
+  more             String?  @db.VarChar(600)
+  province         String   @db.VarChar(20)
+  email            String?  @db.VarChar(40)
+  website_url      String?  @db.VarChar(200)
+  line_id          String?  @db.VarChar(40)
+  travel           String?  @db.VarChar(70)
+  map_picture      String?  @db.VarChar(130)
+  product          String?  @db.VarChar(1000)
+  video            String?  @db.VarChar(70)
+  thumbnail        String?  @db.VarChar(150)
+  details          String?  @db.VarChar(2000)
+  mobile_phone     String?  @db.VarChar(60)
+  facebook         String?  @db.VarChar(40)
+  store_name       String   @db.VarChar(100)
+  contact_name     String?  @db.VarChar(50)
+  soy              String?  @db.VarChar(40)
+  moo              String?  @db.VarChar(110)
+  fax_number       String?  @db.VarChar(30)
+  road             String?  @db.VarChar(40)
+  aumper           String?  @db.VarChar(20)
+  longitude        Decimal? @db.Decimal(20, 8)
+  address          String?  @db.VarChar(140)
+  tumbon           String?  @db.VarChar(20)
+  store_id         Int?
+  contact_number   String?  @db.VarChar(60)
+  twitter          String?  @db.VarChar(10)
+  full_text        String?  @map("_full_text") @db.VarChar(2400)
+  zip_code         Int?
+  id               Int      @id @default(autoincrement())
+  author_id        Int
+  users            User     @relation("storesTousers", fields: [author_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@map("stores")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String
+  email     String?
+  avatar    String?
+  createdAt DateTime @default(now())
+  salt      String
+  token_api String   @unique @default(dbgenerated("extensions.uuid_generate_v4()")) @db.Uuid
+  stores    Store[]  @relation("storesTousers")
+
+  @@map("users")
+}

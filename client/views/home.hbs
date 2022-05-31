@@ -1,0 +1,65 @@
+<h1>Welcome to {{title}}</h1>
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea, doloremque quisquam quos animi consectetur dolorem
+    soluta? Repudiandae maxime ducimus quibusdam suscipit velit porro, voluptas ab! Amet voluptatibus dignissimos
+    cupiditate fugit?</p>
+<table data-toggle="table" data-toolbar="#toolbar" data-search="true" data-show-toggle="true"
+    data-show-fullscreen="true" data-show-columns="true" data-show-columns-toggle-all="true" data-show-export="true"
+    data-pagination="true" data-show-footer="true" virtualScroll="true">
+    <thead>
+        <tr class="text-center">
+            <th scope="col">ลำดับ</th>
+            <th scope="col">ชื่อร้านค้า</th>
+            <th scope="col">สินค้า</th>
+            <th scope="col">จังหวัด</th>
+            <th scope="col">โทร</th>
+            <th scope="col">รูปภาพ</th>
+            <th scope="col">แผนที่</th>
+            {{#if user}}
+            <th scope="col">Action</th>
+            {{/if}}
+        </tr>
+    </thead>
+    <tbody>
+        {{#if user}}
+        {{#each stores}}
+        <tr>
+            <td class="text-center">{{this.id}}</td>
+            <td>{{this.store_name}}</td>
+            <td>{{this.product}}</td>
+            <td class="text-center">{{this.province}}</td>
+            <td>{{this.mobile_phone}}</td>
+            <td class="text-center">
+                <img src="{{this.thumbnail}}" width="100" height="80" style="object-fit: contain" />
+            </td>
+            <td class="text-center">
+                <a href="https://maps.google.com/?q={{this.latitude}},{{this.longitude}}" target="_blank">click</a>
+            </td>
+            <td class="text-center gap-3">
+                <div class="d-grid gap-1 ">
+
+                    <button type="button" class="btn btn-outline-primary">edit</button>
+                    <button type="button" class="btn btn-danger">delete</button>
+                </div>
+            </td>
+        </tr>
+        {{/each}}
+        {{else}}
+        {{#each stores}}
+        <tr>
+            <td class="text-center">{{this.id}}</td>
+            <td>{{this.store_name}}</td>
+            <td>{{this.product}}</td>
+            <td class="text-center">{{this.province}}</td>
+            <td>{{this.mobile_phone}}</td>
+            <td class="text-center">
+                <img src="{{this.thumbnail}}" width="100" height="80" style="object-fit: contain" />
+            </td>
+            <td class="text-center">
+                <a href="https://maps.google.com/?q={{this.latitude}},{{this.longitude}}" target="_blank">click</a>
+            </td>
+        </tr>
+        {{/each}}
+        {{/if}}
+
+    </tbody>
+</table>

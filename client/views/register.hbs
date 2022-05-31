@@ -1,0 +1,37 @@
+<div class="row align-items-center h-100">
+    <div class="col">
+        <img src="register.svg" height="300px">
+    </div>
+    <div class="col">
+        <form action="/register" method="POST">
+            <div class="form-outline mb-4 text-center">
+                <h3>Register</h3>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="text" name="username" class="form-control" required="true" />
+                <label class="form-label" for="form2Example1">Username</label>
+            </div>
+
+
+            <div class="form-outline mb-4">
+                <input type="password" name="password" class="form-control" required="true" />
+                <label class="form-label" for="form2Example2">Password</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="email" name="email" class="form-control" required="true" />
+                <label class="form-label" for="form2Example2">E-mail</label>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary mb-4">Register</button>
+            </div>
+
+            <!-- Register buttons -->
+            <div class="text-center">
+                <p>Have a member? <a href="/login">Login</a></p>
+            </div>
+        </form>
+    </div>
+</div>
