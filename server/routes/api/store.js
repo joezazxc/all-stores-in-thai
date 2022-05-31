@@ -8,7 +8,7 @@ const router = Router();
 
 router.get('/', async (req, res, next) => {
     try {
-        const stores = await prisma.store.findMany({ take: 100 })
+        const stores = await prisma.store.findMany({ take: 500 })
         res.success(stores)
     } catch (error) {
         console.log(error)
