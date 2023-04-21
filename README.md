@@ -2,7 +2,7 @@
 
 # Web Application to Get Data API and Show Data in List
 
-This is a web application that uses API to get data and display it in a list format. It also provides a registration feature that allows users to edit the data with token authentication.
+This project is part of NBU-ITS343 class study. It is a web application that uses API to get data and display it in a list format. It also provides a registration feature that allows users to edit the data with session-based authentication.
 
 ## Technologies Used
 
